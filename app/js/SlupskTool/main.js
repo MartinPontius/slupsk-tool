@@ -1,11 +1,12 @@
-define(['wq/app', './removeattachment', './instruction', './filter', './preselect', 'wq/map', 'wq/patterns', 'wq/locate',
+define(['wq/app', './removeattachment', './instruction', './filter', './preselect', './i18n', 'wq/map', 'wq/patterns', 'wq/locate',
         './config', 'leaflet.draw', 'leaflet.markercluster'],
-function(app, removeattachment, instruction, filter, preselect, map, patterns, locate, config) {
+function(app, removeattachment, instruction, filter, preselect, i18n, map, patterns, locate, config) {
 
 app.use(removeattachment);
 app.use(instruction);
 app.use(filter);
 app.use(preselect);
+app.use(i18n);
 app.use(map);
 app.use(patterns);
 app.use(locate);

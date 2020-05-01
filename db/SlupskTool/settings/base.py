@@ -73,17 +73,15 @@ from wq.db.default_settings import (
 TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, 'templates')]
 
 # Add messages to context_processors
-TEMPLATES[0]['OPTIONS']['context_processors']=list(TEMPLATES[0]['OPTIONS']['context_processors'])
-TEMPLATES[0]['OPTIONS']['context_processors'].append('django.contrib.messages.context_processors.messages')
-TEMPLATES[0]['OPTIONS']['context_processors']=tuple(TEMPLATES[0]['OPTIONS']['context_processors'])
-TEMPLATES[1]['OPTIONS']['context_processors']=list(TEMPLATES[0]['OPTIONS']['context_processors'])
-TEMPLATES[1]['OPTIONS']['context_processors'].append('django.contrib.messages.context_processors.messages')
-TEMPLATES[1]['OPTIONS']['context_processors']=tuple(TEMPLATES[0]['OPTIONS']['context_processors'])
 TEMPLATES[0]['OPTIONS']['context_processors'] += (
+    'django.contrib.messages.context_processors.messages',
+    'SlupskTool.context_processors.link_visibility',
+    'django.template.context_processors.i18n',
+    'SlupskTool.i18n.translation.translate',
     'SlupskTool.context_processors.route_base_url',
 )
-TEMPLATES[0]['OPTIONS']['context_processors'] += (
-    'SlupskTool.context_processors.link_visibility',
+TEMPLATES[1]['OPTIONS']['context_processors'] += (
+    'django.contrib.messages.context_processors.messages',
 )
 
 # wq: Recommended settings unique to wq.db
@@ -125,7 +123,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGES = [
+    ('pl', 'Polish'),
+    ('en', 'English'),
+]
+
+LANGUAGE_CODE = 'pl'
 
 TIME_ZONE = 'UTC'
 
