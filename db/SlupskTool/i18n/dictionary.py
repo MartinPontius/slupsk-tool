@@ -13,13 +13,13 @@ dict_en['instruction1_part1'] = 'We all love food. We make sure our children eat
 
 class Dictionary():
 
-    def __init__(self, language):
+    def __init__(self):
+        self.dictionary_pl = dict_pl
+        self.dictionary_en = dict_en
+
+    def get_dict(self, language):
 
         if language == 'pl':
-            self._dictionary = dict_pl
+            return self.dictionary_pl
         else:
-            self._dictionary = dict_en
-
-    def get_dict(self):
-
-        return self._dictionary
+            return self.dictionary_en
